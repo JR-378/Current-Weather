@@ -1,10 +1,27 @@
-# Django-Weather
+# Current-Weather
 
 This is a weather application with Django backend and React frontend. In the application user can search for a city's weather and save the location for further use. The weather data is provided by [OpenWeatherMap](https://openweathermap.org/) API. In the backend, there is a class OpenWeatherMap, which is used to dynamically build the url for the [Current weather data API](https://openweathermap.org/current) and to parse the data for the frontend to use. When the user saves the city, all this parsed data will be used to create a city within an SQLite database.
 
 Deleting or updating cities were not added, as I determined them to be out of the scope for this project's purpose. I only wanted the application to present data and to do that there needs to be a way to add it. Thus modifying data is not implemented, except in the Django Admin interface. However, the backend does check that there are nor will be any duplicate cities with the same country.
 
 A simple token authentication is implemented in the application. The frontend keeps the user logged in for one hour, before automatically logging out the user. There is no registration API either, as I want it to be available to users that **I have** given access to.
+
+## What is what
+
+Folders **public** and **src** contain React related code. The folder **weather_site** is the main Django application and its settings. The folder **weather** contains the implementation of the API.
+
+### How to build React application
+
+```cmd
+
+$ npm run build
+```
+
+### How to run Django
+```cmd
+
+$ python manage.py runserver
+```
 
 ## References
 

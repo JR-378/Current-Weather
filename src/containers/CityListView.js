@@ -15,7 +15,7 @@ class CityListView extends React.Component {
             "Content-Type": "application/json",
             Authorization: `Token ${this.props.token}`
         };
-        axios.get("https://jesse-reinikka-weather.herokuapp.com/api/").then(res => {
+        axios.get("https://<your.url>.herokuapp.com/api/").then(res => {
           this.setState({
             cities: res.data
           });

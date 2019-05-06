@@ -1,35 +1,14 @@
 from django.db import IntegrityError
-# from knox.models import AuthToken
 from rest_framework import status
 from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.views import APIView
-from rest_framework.permissions import BasePermission, IsAuthenticated
-# from rest_framework.authtoken.models import
+from rest_framework.permissions import IsAuthenticated
 
 from .open_weather_map import OpenWeatherMap
-from .serializers import CitySerializer, LoginUserSerializer, UserSerializer, CityWeatherSerializer
+from .serializers import CitySerializer, CityWeatherSerializer
 from .models import City
-
-
-def index(request):
-    api = OpenWeatherMap()
-    city = 'Las Vegas'
-    city_weather = api.current_weather(city)
-
-    weather = {
-        'city': city,
-        'country_code': city_weather["sys"]["country"],
-        'temperature': city_weather['main']['temp'],
-        'temperature_unit': "",
-        'humidity': city_weather['main']['humidity'],
-        'description': city_weather['weather'][0]['description'],
-        'icon': city_weather['weather'][0]['icon']
-    }
-
-    context = {'weather': weather}
-    return render(request, 'weather/index_test.html', context)
 
 
 class CityWeather(APIView):
@@ -123,27 +102,3 @@ class MyCities(APIView):
         """
         user = self.request.user
         return City.objects.filter(user=user)
-
-
-"""
-class LoginAPI(GenericAPIView):
-    serializer_class = LoginUserSerializer
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data
-        return Response({
-            "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": AuthToken.objects.create(user)
-        })
-
-
-
-class UserAPI(RetrieveAPIView):
-    # permission_classes = [permissions.IsAuthenticated, ]
-    serializer_class = UserSerializer
-
-    def get_object(self):
-        return self.request.user
-"""

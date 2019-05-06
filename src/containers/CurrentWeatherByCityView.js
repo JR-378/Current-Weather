@@ -9,34 +9,6 @@ import { connect } from 'react-redux';
 
 class CurrentWeatherByCityView extends React.Component {
 
-    /*
-    // for testing
-    state = {
-        haveWeatherdata: true,
-        weatherData: {
-            city: "Ilmajoki",
-            country_code: "FI",
-            country: "Finland",
-
-            temperature: "15.45",
-            temperature_max: "17.45",
-            temperature_min: "12.45",
-            temperature_unit: "°C",
-            humidity: "44",
-            pressure: "8252",
-            description: "scattered clouds",
-            latitude: "62.73",
-            longitude: "22.58",
-
-            icon: "03d",
-            wind_speed: "5.1"
-        },
-        errorMessageSubmit: undefined,
-        errorMessage: undefined,
-        successMessage: undefined
-      }
-      */
-
     
     state = {
         haveWeatherdata: false,
@@ -76,7 +48,7 @@ class CurrentWeatherByCityView extends React.Component {
             Authorization: `Token ${this.props.token}`
         };
 
-        axios.post("https://jesse-reinikka-weather.herokuapp.com/api/weather/", {
+        axios.post("https://<your.url>.herokuapp.com/api/weather/", {
                     city: city,
                     country: country,
                     unit: unit
@@ -130,7 +102,7 @@ class CurrentWeatherByCityView extends React.Component {
         console.log("handleSave", this.state.weatherData)
         const data = this.state.weatherData
 
-        axios.post("https://jesse-reinikka-weather.herokuapp.com/api/city", {
+        axios.post("https://<your.url>.herokuapp.com/api/city", {
             "name": data.city,
             "country": data.country,
             "country_code": data.country_code,

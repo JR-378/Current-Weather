@@ -7,35 +7,6 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/auth';
 
 
-// Not finished. Lets keep it simple for now. Source: https://getbootstrap.com/docs/4.3/examples/dashboard/
-/*
-class Sidebar extends React.Component {
-    render () {
-        return (
-            <bs.Container fluid>
-                <bs.Row>
-                    <bs.Nav className="col-md-2 d-none d-md-block bg-light sidebar">
-                        <div className="sidebar-sticky">
-                            <ul className="nav flex-column">
-                                <li className="nav-item">
-                                    <a className="nav-link active" href="#home">
-                                        Dashboard
-                                        <span className="sr-only"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </bs.Nav>
-
-                </bs.Row>
-                    
-                </bs.Container>     
-        )
-    }
-}
-*/
-
 // https://getbootstrap.com/docs/4.3/examples/navbar-fixed/
 class NavigationBar extends React.Component {
     render() {
@@ -63,15 +34,6 @@ class Layout extends React.Component {
 
     render() {
         return (
-            /*
-            <div>
-                <NavigationBar {...this.props}/>
-                <bs.Container>
-                    {this.props.children}
-                </bs.Container>
-            </div>
-            */
-            
             <React.Fragment>
                 {
                     this.props.isAuthenticated ?

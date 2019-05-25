@@ -67,20 +67,19 @@ class OpenWeatherMap(object):
             'city': data["name"],
             'country_code': data["sys"]["country"],
             'country': self.country_code_to_country(country_code),
+            'latitude': data['coord']['lat'],
+            'longitude': data['coord']['lon'],
 
             'temperature': data['main']['temp'],
             'temperature_max': data['main']['temp_max'],
             'temperature_min': data['main']['temp_min'],
             'temperature_unit': unit,
+
             'humidity': data['main']['humidity'],
             'pressure': data['main']['pressure'],
+            'wind_speed': data['wind']['speed'],
             'description': data['weather'][0]['description'],
-
-            'latitude': data['coord']['lat'],
-            'longitude': data['coord']['lon'],
-
-            'icon': data['weather'][0]['icon'],
-            'wind_speed': data['wind']['speed']
+            'icon': data['weather'][0]['icon']
         }
         logger.debug("Parsed data to: " + str(weather_data))
 

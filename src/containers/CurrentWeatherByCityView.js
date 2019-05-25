@@ -63,13 +63,17 @@ class CurrentWeatherByCityView extends React.Component {
                     city: res.data.city,
                     country_code: res.data.country_code,
                     country: res.data.country,
-                    temperature: res.data.temperature,
-                    temperature_unit: res.data.temperature_unit,
-                    humidity: res.data.humidity,
-                    description: res.data.description,
-        
                     latitude: res.data.latitude,
                     longitude: res.data.longitude,
+
+                    temperature: res.data.temperature,
+                    temperature_max: res.data.temperature_max,
+                    temperature_min: res.data.temperature_min,
+                    temperature_unit: res.data.temperature_unit,
+                    humidity: res.data.humidity,
+                    pressure: res.data.pressure,
+                    description: res.data.description,
+                    wind_speed: res.data.wind_speed,
         
                     icon: res.data.icon
                 }

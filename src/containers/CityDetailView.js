@@ -20,7 +20,7 @@ class CityDetailView extends React.Component {
         };
         
         console.log(axios.defaults.headers)
-        axios.get(`https://jesse-reinikka-weather.herokuapp.com/api/city/${cityID}`)
+        axios.get(`/api/city/${cityID}`)
             .then(response => {
                 this.setState({
                     city: response.data

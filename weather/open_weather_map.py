@@ -93,24 +93,25 @@ class OpenWeatherMap(object):
         :param location: Location in the format of {city name},{country code}. Supplying country code is not necessary.
         :return:
         """
-        country_and_code = location.split(",", 1)
+        city_and_country = location.split(",", 1)
 
-        if len(country_and_code) is not 2:
+        if len(city_and_country) is not 2:
             logger.debug("No country code supplied.")
             logger.debug("Location is " + location + ".")
             return location
 
-        country_code = country_and_code[1]
-        logger.debug("Country code is " + country_code)
+        city = city_and_country[0]
+        country = city_and_country[1]
+        logger.debug("Country code is " + country)
         
-        if country_code != "":
-            logger.debug("Converting " + country_code + " to country code.")
-            country_code = pycountry.countries.get(name=country_code).alpha_2.lower()
+        if country != "":
+            logger.debug("Converting " + country + " to country code.")
+            country_code = pycountry.countries.get(name=country).alpha_2.lower()
             logger.debug("Country code is " + country_code + ".")
-            location = location.rsplit(",", 1)[0] + "," + country_code
+            location = city + "," + country_code
             logger.debug("Location is " + location + ".")
         else: 
-            return country_and_code[0]
+            location = city
 
         return location
 

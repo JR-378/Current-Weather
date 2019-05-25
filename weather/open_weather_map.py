@@ -121,20 +121,20 @@ class OpenWeatherMap(object):
 
     @staticmethod
     def check_location(location):
-        split_location = location.rsplit(",", 1)
-        city = split_location[0]
-        try:
-            country_code = split_location[1]
-        except IndexError:
-            country_code = None
-            logger.debug("No country code supplied.")
+        city_and_country = location.rsplit(",", 1)
+        city = city_and_country[0]
 
         # Remove special letters and replace them with values used by the API.
         city_corrected = city.replace("ä", "ae").replace("ö", "o").replace("å", "a")
 
-        if country_code is not None:
+        if len(city_and_country) is not 2:
+            logger.debug("No country code supplied.")
+        else:
+            country_code = city_and_country[1]
+            logger.debug("Country code is " + country_code + ".")
             city_corrected = city_corrected + "," + country_code
-
+            
+        logger.debug("Location is " + city_corrected + ".")
         return city_corrected
 
 
